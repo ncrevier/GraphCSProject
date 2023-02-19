@@ -9,7 +9,11 @@ public class tester {
         int[] firstNode = myG.getOneNodeConnections(3);
         for(int i=0; i<10; i++) {
             System.out.print(firstNode[i]);
+            if (i == 9) {
+                System.out.println();
+            }
         }
+        System.out.println("Showing Bryan how GIT works");
 
     }
 

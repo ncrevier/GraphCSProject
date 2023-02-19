@@ -7,7 +7,6 @@ public class Graph {
     int nodes;
 
 
-
     public Graph(int size) {
         matrix = new int[size][size];
         nodes = 0;
