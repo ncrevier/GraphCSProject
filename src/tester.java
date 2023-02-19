@@ -1,6 +1,16 @@
-public class tester {
-    public static void main(String[] args) {
 
-        System.out.println("Hello world!");
+public class tester {
+
+    public static void main(String[] args) {
+        Graph myG = new Graph(10);
+        System.out.println(myG);
+        myG.randomlyGenerate(4, 50);
+        System.out.println(myG);
+        int[] firstNode = myG.getOneNodeConnections(3);
+        for(int i=0; i<10; i++) {
+            System.out.print(firstNode[i]);
+        }
+
     }
+
 }
