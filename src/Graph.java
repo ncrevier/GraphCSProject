@@ -1,8 +1,4 @@
-
-
-
 public class Graph {
-
     int[][] matrix;
     int nodes;
 
@@ -31,8 +27,6 @@ public class Graph {
     }
 
     public void addEdge(int n1, int n2, int cost) {
-
-
         if(n1 < nodes && n2 < nodes && n1 >= 0 && n2 >=0) {
             matrix[n1][n2] = cost;
             matrix[n2][n1] = cost;
@@ -44,7 +38,7 @@ public class Graph {
         for(int i=0; i<nodes; i++) {
             for(int j=i; j<nodes; j++) {
                 if(j!=i) {
-                    if(100 * Math.random() < perchanceZeros) {
+                    if(100.0 * Math.random() < perchanceZeros) {
                         cost = 0;
                     }
                     else {
@@ -64,7 +58,7 @@ public class Graph {
 
     }
 
-    public int[] getOneNodeConnections(int n1) {
+    public int[] getConnections(int n1) {
         int[] returnArray = new int[nodes];
         for (int i=0; i<nodes; i++) {
             returnArray[i] = matrix[i][n1];
