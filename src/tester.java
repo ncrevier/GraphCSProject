@@ -2,12 +2,12 @@
 public class tester {
 
     public static void main(String[] args) {
-        Graph myG = new Graph(5);
+        Graph myG = new Graph(10);
         System.out.println(myG);
-        myG.randomlyGenerate(20, 50);
+        myG.randomlyGenerate(4, 50);
         System.out.println(myG);
         int[] firstNode = myG.getOneNodeConnections(3);
-        for(int i=0; i<5; i++) {
+        for(int i=0; i<10; i++) {
             System.out.print(firstNode[i]);
             if (i == 9) {
                 System.out.println();
