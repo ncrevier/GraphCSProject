@@ -1,3 +1,5 @@
+import javax.swing.*;
+
 public class tester {
 
     public static void main(String[] args) {
@@ -16,6 +18,13 @@ public class tester {
         System.out.println("testing");
 
 
+        TFrame frame = new TFrame(800, 800, "Main Frame"); // or new TFrame(); without a name
+
+        JLabel label = new JLabel("Not Fortnite"); // creates a label with text "Not Fortnite"
+        label.setText("Fortnite"); //changes text to "Not Fortnite"
+
+        DisplayGraphics m = new DisplayGraphics();
+        frame.add(m);
     }
 
 }
