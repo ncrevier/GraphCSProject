@@ -26,7 +26,7 @@ public class Graph {
 
 
     public void addNode() {
-        matrix[nodes][nodes] = 9;
+        matrix[nodes][nodes] = 0;
         nodes++;
     }
 
@@ -70,6 +70,43 @@ public class Graph {
             returnArray[i] = matrix[i][n1];
         }
         return returnArray;
+    }
+
+    public boolean islands(int n1){
+        int[] islandArray = new int[nodes];
+        for (int i = 0; i < nodes; i++) {
+            islandArray[i] = 0;
+        }
+        islandArray[0] = 1;
+        boolean progressing = true;
+        int[] nodeConnectionArray = new int[nodes];
+        while(progressing == true && fullOfNotZeros(islandArray)){
+            progressing = false;
+            for(int i=0; i<nodes; i++){
+                if(islandArray[i]== 1){
+                    nodeConnectionArray = getOneNodeConnections(i);
+                    for(int j=0; j<nodes; j++){
+                        if (nodeConnectionArray[j] != 0 && i != j){
+                            islandArray[j] = 1;
+                            progressing = true;
+                        }
+                    }
+                    islandArray[i] = 2;
+                }
+            }
+        }
+        return progressing;
+    }
+
+    public boolean fullOfNotZeros(int[] array){
+        boolean yesIndeed = true;
+        for (int i = 0; i < array.length; i++) {
+            if(array[i] == 0){
+                yesIndeed = false;
+                break;
+            }
+        }
+        return yesIndeed;
     }
 
     public String toString() {
