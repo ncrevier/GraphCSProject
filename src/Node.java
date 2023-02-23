@@ -19,7 +19,8 @@ int xcoord = x coord
 int ycoord = y coord
 
      */
-
+    private int xcoord;
+    private int ycoord;
     private boolean[] connected;
 
 
