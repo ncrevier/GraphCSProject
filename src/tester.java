@@ -6,7 +6,7 @@ public class tester {
         System.out.println(myG);
         myG.randomlyGenerate(4, 50);
         System.out.println(myG);
-        int[] firstNode = myG.getOneNodeConnections(3);
+        int[] firstNode = myG.getConnections(3);
         for(int i=0; i<10; i++) {
             System.out.print(firstNode[i]);
             if (i == 9) {

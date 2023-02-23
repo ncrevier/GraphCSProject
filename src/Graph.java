@@ -78,7 +78,7 @@ public class Graph {
             progressing = false;
             for(int i=0; i<nodes; i++){
                 if(islandArray[i]== 1){
-                    nodeConnectionArray = getOneNodeConnections(i);
+                    nodeConnectionArray = getConnections(i);
                     for(int j=0; j<nodes; j++){
                         if (nodeConnectionArray[j] != 0 && i != j){
                             islandArray[j] = 1;
