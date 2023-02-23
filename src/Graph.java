@@ -74,13 +74,13 @@ public class Graph {
         islandArray[0] = 1;
         boolean progressing = true;
         int[] nodeConnectionArray = new int[nodes];
-        while(progressing == true && fullOfNotZeros(islandArray)){
+        while(progressing == true && !fullOfNotZeros(islandArray)){
             progressing = false;
             for(int i=0; i<nodes; i++){
                 if(islandArray[i]== 1){
-                    nodeConnectionArray = getOneNodeConnections(i);
+                    nodeConnectionArray = getConnections(i);
                     for(int j=0; j<nodes; j++){
-                        if (nodeConnectionArray[j] != 0 && i != j){
+                        if (nodeConnectionArray[j] != 0 && i != j && islandArray[j] == 0){
                             islandArray[j] = 1;
                             progressing = true;
                         }
