@@ -1,7 +1,6 @@
+public class Node {
 
-
-public class Renderer {
-   /*
+    /*
     interpreter:
 [0 1 2 3 4]
 [1 0 4 5 6]
@@ -20,5 +19,9 @@ int xcoord = x coord
 int ycoord = y coord
 
      */
-    public static void st(){};
+
+    private boolean[] connected;
+
+
+
 }
