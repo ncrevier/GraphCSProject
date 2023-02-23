@@ -66,7 +66,7 @@ public class Graph {
         return returnArray;
     }
 
-    public boolean islands(int n1){
+    public boolean noIslands(){
         int[] islandArray = new int[nodes];
         for (int i = 0; i < nodes; i++) {
             islandArray[i] = 0;
