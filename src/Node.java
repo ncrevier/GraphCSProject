@@ -1,7 +1,7 @@
 public class Node{
-    private int xcoord;
+    private double xcoord;
     // x-coord of center
-    private int ycoord;
+    private double ycoord;
     // y-coord of center
     private int[] connections;
     // each index related to node it is connected to. a 0 value means it is not connected.
@@ -9,18 +9,18 @@ public class Node{
     // each index relates to the node it is connected to. returns true if connected, false if not.
     // returns true for self.
 
-    public Node(int x, int y, int[] connections) {
+    public Node(double x, double y, int[] connections) {
         xcoord=x;
         ycoord=y;
         this.connections=connections;
         // position of self will reflect its position in Graph; see graphMaker
     }
 
-    public int getX(){
+    public double getX(){
         return xcoord;
     }
 
-    public int getY(){
+    public double getY(){
         return ycoord;
     }
 
