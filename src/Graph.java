@@ -1,3 +1,5 @@
+import org.w3c.dom.Node;
+
 public class Graph {
     int[][] matrix;
     int nodes;
@@ -116,6 +118,15 @@ public class Graph {
         return returnString;
 
     }
+
+    public Node[] graphMaker(){
+        Node[] x = new Node[this.nodes];
+        for (int row=0; row < nodes; row++){
+            int x[row] = new int[3];
+        }
+        return x;
+    }
+}
 
 
 
