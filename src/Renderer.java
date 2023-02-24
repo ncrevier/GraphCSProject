@@ -20,9 +20,11 @@ int xcoord = x coord
 int ycoord = y coord
 
      */
-    public static void graphMaker(int[] graph){
+    public static Node[] graphMaker(int[] graph){
+        Node[] x = new Node[graph.length];
         for (int row=0; row < graph.length; row++){
 
         }
+        return x;
     }
 }

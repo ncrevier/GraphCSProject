@@ -22,6 +22,10 @@ int ycoord = y coord
     private int xcoord;
     private int ycoord;
     private boolean[] connected;
+    // each index relates to the node it is connected to. returns true if connected, false if not.
+    // returns true for self.
+
+
 
 
 
