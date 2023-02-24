@@ -1,29 +1,29 @@
-public class Node {
-
-    /*
-    interpreter:
-[0 1 2 3 4]
-[1 0 4 5 6]
-[2 4 0 7 8]
-[3 5 7 0 6]
-[4 6 8 6 0]
-
-on row 0, it will start on index 0 (making circles and connection with each node.
-on row 1, it will start on index 1 (skipping the node already made w/ node 0) and go through.
-etc. etc.
-
-maybe make a "node" class for the drawing of nodes
-attributes:
-int[] paths = the row that the node applies to.
-int xcoord = x coord
-int ycoord = y coord
-
-     */
+public class Node{
     private int xcoord;
     private int ycoord;
-    private boolean[] connected;
+    private int[] connections;
+    // each index related to node it is connected to. a 0 value means it is not connected.
+
     // each index relates to the node it is connected to. returns true if connected, false if not.
     // returns true for self.
+
+    public Node(int x, int y, int[] connections) {
+        xcoord=x;
+        ycoord=y;
+        this.connections=connections;
+        // position of self will reflect its position in Graph; see graphMaker
+    }
+
+    public int getXcoord(){
+        return xcoord;
+    }
+
+    public int getYcoord(){
+        return ycoord;
+    }
+
+
+
 
 
 

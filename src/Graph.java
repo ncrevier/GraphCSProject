@@ -1,4 +1,3 @@
-import org.w3c.dom.Node;
 
 public class Graph {
     int[][] matrix;
@@ -120,15 +119,17 @@ public class Graph {
     }
 
     public Node[] graphMaker(){
-        Node[] x = new Node[this.nodes];
+        Node[] nod = new Node[this.nodes];
+        double theta = 2*Math.PI/nodes;
         for (int row=0; row < nodes; row++){
-            int x[row] = new int[3];
+            double x = Math.cos(theta * row);
+            double y = Math.sin(theta * row);
+            nod[row] = new Node((int) x, (int) y, matrix[row]);
         }
-        return x;
+        return nod;
     }
 }
 
 
 
-}
 
