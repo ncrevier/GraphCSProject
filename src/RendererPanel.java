@@ -4,7 +4,8 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 public class RendererPanel extends JPanel implements ActionListener{
 
-
+        Node[] nodesArray;
+        Button[] buttonArray;
         JButton buttonDemo;
         String textDemo;
         Graphics2D g2D;
@@ -12,7 +13,6 @@ public class RendererPanel extends JPanel implements ActionListener{
 
         RendererPanel(int width, int height){
             //image = new ImageIcon("").getImage();
-
             this.setPreferredSize(new Dimension(500,500));
             buttonDemo = new JButton();
             buttonDemo.addActionListener(this);
@@ -41,6 +41,14 @@ public class RendererPanel extends JPanel implements ActionListener{
 
             //g2D.drawImage(image, coordinates);
         }
+
+        public void renderNodes(Graph gr) {
+            nodesArray = gr.graphMaker();
+            buttonArray
+
+        }
+
+
 
 
 
