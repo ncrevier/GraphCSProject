@@ -1,6 +1,8 @@
 public class Node{
     private int xcoord;
+    // x-coord of center
     private int ycoord;
+    // y-coord of center
     private int[] connections;
     // each index related to node it is connected to. a 0 value means it is not connected.
 
@@ -14,11 +16,11 @@ public class Node{
         // position of self will reflect its position in Graph; see graphMaker
     }
 
-    public int getXcoord(){
+    public int getX(){
         return xcoord;
     }
 
-    public int getYcoord(){
+    public int getY(){
         return ycoord;
     }
 
