@@ -44,19 +44,27 @@ public class RendererPanel extends JPanel implements ActionListener{
             buttonDemo.setEnabled(true);
 
             this.add(buttonDemo);
+            renderLines(g2D);
             renderNodes(g2D);
 
 
             //g2D.drawImage(image, coordinates);
         }
 
+        public void renderLines(Graphics2D g){
+            for (int i = 0; i < NumOfNodes; i++) {
+                for (int j = i; j < NumOfNodes; j++) {
+                    g.drawLine((int)nodesArray[i].getX() + 320, (int)nodesArray[i].getY() + 320, (int)nodesArray[j].getX() + 320, (int)nodesArray[j].getY() + 320);
+                    g.setPaint(desiredPaint);
+                }
+
+            }
+
+        }
+
         public void renderNodes(Graphics2D g) {
 
-
             for (int i = 0; i < NumOfNodes; i++) {
-                System.out.println(1);
-
-                System.out.println(nodesArray[i].getX() + " " + nodesArray[i].getX());
                 g.drawOval((int)nodesArray[i].getX() + 320 - 5, (int)nodesArray[i].getY() + 320 -5, 10, 10);
                 g.setPaint(desiredPaint);
                 //g.drawLine((int)nodesArray[i].getX() + 320 - 5, (int)nodesArray[i].getY() + 320 -5,)
