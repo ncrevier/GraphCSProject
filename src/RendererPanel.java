@@ -65,8 +65,11 @@ public class RendererPanel extends JPanel implements ActionListener{
         public void renderNodes(Graphics2D g) {
 
             for (int i = 0; i < NumOfNodes; i++) {
-                g.drawOval((int)nodesArray[i].getX() + 320 - 5, (int)nodesArray[i].getY() + 320 -5, 10, 10);
-                g.setPaint(desiredPaint);
+                g.setPaint(Color.BLACK);
+                g.drawOval((int)nodesArray[i].getX() + 320 - 15, (int)nodesArray[i].getY() + 320 -15, 30, 30);
+                g.setPaint(Color.white);
+                g.fillOval((int)nodesArray[i].getX() + 320 - 14, (int)nodesArray[i].getY() + 320 -14, 28, 28);
+
                 //g.drawLine((int)nodesArray[i].getX() + 320 - 5, (int)nodesArray[i].getY() + 320 -5,)
 
             }
