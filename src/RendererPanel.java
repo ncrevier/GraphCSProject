@@ -13,8 +13,12 @@ public class RendererPanel extends JPanel implements ActionListener{
         String textDemo;
         Graphics2D g2D;
 
+        Integer[][] colors;
 
-        RendererPanel(int width, int height, Graph gr){
+        JButton buttons[];
+
+
+    RendererPanel(int width, int height, Graph gr){
             //image = new ImageIcon("").getImage();
             this.setPreferredSize(new Dimension(640,640));
 //            buttonDemo = new JButton();
@@ -24,10 +28,25 @@ public class RendererPanel extends JPanel implements ActionListener{
             theGraph = gr;
             nodesArray = theGraph.graphMaker();
             NumOfNodes = theGraph.nodes;
+            colors = new Integer[gr.matrix.length][gr.matrix.length];
+            buttons = new JButton[NumOfNodes];
+            for (int x=0;x<NumOfNodes;x++){
+                buttons[x] = new JButton();
+                buttons[x].addActionListener(this);
+                buttons[x].setBounds((int)nodesArray[x].getX()+320-50, (int)nodesArray[x].getY()+320-50, 100,100);
+                buttons[x].setEnabled(true);
+                buttons[x].setVisible(true);
+            }
 
         }
 
-        public void paint(Graphics g) {
+    public void setColor(){
+
+    }
+
+
+
+    public void paint(Graphics g) {
 
 
 
@@ -46,6 +65,10 @@ public class RendererPanel extends JPanel implements ActionListener{
 //            this.add(buttonDemo);
             renderLines(g2D);
             renderNodes(g2D);
+            for (int x=0;x<NumOfNodes;x++){
+                this.add(buttons[x]);
+            }
+
 
 
             //g2D.drawImage(image, coordinates);
@@ -107,33 +130,14 @@ public class RendererPanel extends JPanel implements ActionListener{
                 textDemo += "0";
                 repaint();
             }
+            System.out.println("w");
+            for (Integer x=0;x<NumOfNodes;x++) {
+                if (e.getSource() == buttons[x]) {
+//                    textDemo += x;
+                    System.out.println(x);
+                    repaint();
+                }
+            }
         }
-
-
-
-
-
-
-    /*
-    interpreter:
-[0 1 2 3 4]
-[1 0 4 5 6]
-[2 4 0 7 8]
-[3 5 7 0 6]
-[4 6 8 6 0]
-
-on row 0, it will start on index 0 (making circles and connection with each node.
-on row 1, it will start on index 1 (skipping the node already made w/ node 0) and go through.
-etc. etc.
-
-maybe make a "node" class for the drawing of nodes
-attributes:
-int[] paths = the row that the node applies to.
-int xcoord = x coord
-int ycoord = y coord
-
-     */
-
-
 
 }
