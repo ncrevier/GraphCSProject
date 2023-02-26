@@ -4,19 +4,26 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 public class RendererPanel extends JPanel implements ActionListener{
 
-
+        Node[] nodesArray;
+        Color desiredPaint;
+        Graph theGraph;
+        int NumOfNodes;
+        Button[] buttonArray;
         JButton buttonDemo;
         String textDemo;
         Graphics2D g2D;
 
 
-        RendererPanel(int width, int height){
+        RendererPanel(int width, int height, Graph gr){
             //image = new ImageIcon("").getImage();
-
-            this.setPreferredSize(new Dimension(500,500));
+            this.setPreferredSize(new Dimension(640,640));
             buttonDemo = new JButton();
             buttonDemo.addActionListener(this);
             textDemo = "";
+            NumOfNodes = 0;
+            theGraph = gr;
+            nodesArray = theGraph.graphMaker();
+            NumOfNodes = theGraph.nodes;
 
         }
 
@@ -27,20 +34,60 @@ public class RendererPanel extends JPanel implements ActionListener{
             g2D = (Graphics2D) g;
             //casting down
             g2D.setPaint(new Color(20,20,2));
-            g2D.fillOval(240, 240, 20, 20);
+            g2D.fillOval(310, 310, 20, 20);
 
             g2D.setFont(new Font("Helvetica", Font.ITALIC, 20));
             g2D.drawString(textDemo, 230, 250);
 
-            buttonDemo.setBounds(240,240,20,20);
+            buttonDemo.setBounds(310,310,20,20);
 
             buttonDemo.setEnabled(true);
 
             this.add(buttonDemo);
+            renderLines(g2D);
+            renderNodes(g2D);
 
 
             //g2D.drawImage(image, coordinates);
         }
+
+        public void renderLines(Graphics2D g){
+            for (int i = 0; i < NumOfNodes; i++) {
+                for (int j = i; j < NumOfNodes; j++) {
+                    g.drawLine((int)nodesArray[i].getX() + 320, (int)nodesArray[i].getY() + 320, (int)nodesArray[j].getX() + 320, (int)nodesArray[j].getY() + 320);
+                    g.setPaint(desiredPaint);
+                }
+
+            }
+
+        }
+
+        public void renderNodes(Graphics2D g) {
+
+            for (int i = 0; i < NumOfNodes; i++) {
+                g.setPaint(Color.BLACK);
+                g.drawOval((int)nodesArray[i].getX() + 320 - 15, (int)nodesArray[i].getY() + 320 -15, 30, 30);
+                g.setPaint(Color.white);
+                g.fillOval((int)nodesArray[i].getX() + 320 - 14, (int)nodesArray[i].getY() + 320 -14, 28, 28);
+
+                //g.drawLine((int)nodesArray[i].getX() + 320 - 5, (int)nodesArray[i].getY() + 320 -5,)
+
+            }
+
+            /*
+            buttonArray = new Button[NumOfNodes];
+            for (int i = 0; i < NumOfNodes; i++) {
+                buttonArray[i] =
+
+            }
+
+             */
+
+
+
+        }
+
+
 
 
 

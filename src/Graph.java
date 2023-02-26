@@ -124,7 +124,7 @@ public class Graph {
         for (int row=0; row < nodes; row++){
             double x = Math.cos(theta * row);
             double y = Math.sin(theta * row);
-            nod[row] = new Node((int) x, (int) y, matrix[row]);
+            nod[row] = new Node( x*250,  y*250, matrix[row]);
         }
         return nod;
     }
