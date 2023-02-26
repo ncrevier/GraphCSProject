@@ -24,6 +24,10 @@ public class Node{
         return ycoord;
     }
 
+    public int[] connections(){
+        return connections;
+    }
+
 
 
 
