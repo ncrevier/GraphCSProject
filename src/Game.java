@@ -13,13 +13,14 @@ public class Game implements ActionListener{
 
 
     Game(int nodesNum, int maxDistance, int percentZeros, int timeGiven){
+        numNodes = nodesNum;
         myGraph = new Graph(numNodes);
         myGraph.randomlyGenerate(maxDistance, percentZeros);
         myframe = new RendererFrame(500,500,"Pathfinder!", myGraph);
         selectedNodes = new int[numNodes];
         selectedNodes[0] = 0;
         numNodesSelected = 0;
-        numNodes = nodesNum;
+
         myTimer = new Timer(1000, null);
         time = timeGiven;
     }
