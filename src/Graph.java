@@ -50,6 +50,9 @@ public class Graph {
                 }
             }
         }
+        if (!noIslands()){
+            randomlyGenerate(maxDistance, perchanceZeros);
+        }
 
 
     }
