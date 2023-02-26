@@ -17,8 +17,8 @@ public class RendererPanel extends JPanel implements ActionListener{
         RendererPanel(int width, int height, Graph gr){
             //image = new ImageIcon("").getImage();
             this.setPreferredSize(new Dimension(640,640));
-            buttonDemo = new JButton();
-            buttonDemo.addActionListener(this);
+//            buttonDemo = new JButton();
+//            buttonDemo.addActionListener(this);
             textDemo = "";
             NumOfNodes = 0;
             theGraph = gr;
@@ -33,17 +33,17 @@ public class RendererPanel extends JPanel implements ActionListener{
 
             g2D = (Graphics2D) g;
             //casting down
-            g2D.setPaint(new Color(20,20,2));
-            g2D.fillOval(310, 310, 20, 20);
+//            g2D.setPaint(new Color(20,20,2));
+//            g2D.fillOval(310, 310, 20, 20);
 
             g2D.setFont(new Font("Helvetica", Font.ITALIC, 20));
             g2D.drawString(textDemo, 230, 250);
 
-            buttonDemo.setBounds(310,310,20,20);
+//            buttonDemo.setBounds(310,310,20,20);
 
-            buttonDemo.setEnabled(true);
+//            buttonDemo.setEnabled(true);
 
-            this.add(buttonDemo);
+//            this.add(buttonDemo);
             renderLines(g2D);
             renderNodes(g2D);
 
@@ -54,8 +54,16 @@ public class RendererPanel extends JPanel implements ActionListener{
         public void renderLines(Graphics2D g){
             for (int i = 0; i < NumOfNodes; i++) {
                 for (int j = i; j < NumOfNodes; j++) {
-                    g.drawLine((int)nodesArray[i].getX() + 320, (int)nodesArray[i].getY() + 320, (int)nodesArray[j].getX() + 320, (int)nodesArray[j].getY() + 320);
-                    g.setPaint(desiredPaint);
+                    if (!((nodesArray[i].connections())[j]==0)){
+                        int x1 = (int)nodesArray[i].getX() + 320;
+                        int y1 = (int)nodesArray[i].getY() + 320;
+                        int x2 = (int)nodesArray[j].getX() + 320;
+                        int y2 = (int)nodesArray[j].getY() + 320;
+                        g.drawLine(x1, y1, x2, y2);
+                        g.setPaint(Color.BLACK);
+                        g.drawString(String.valueOf((nodesArray[i].connections())[j]), (x1+x2)/2, (y1+y2)/2);
+                    }
+
                 }
 
             }
@@ -64,11 +72,13 @@ public class RendererPanel extends JPanel implements ActionListener{
 
         public void renderNodes(Graphics2D g) {
 
-            for (int i = 0; i < NumOfNodes; i++) {
+            for (Integer i = 0; i < NumOfNodes; i++) {
                 g.setPaint(Color.BLACK);
                 g.drawOval((int)nodesArray[i].getX() + 320 - 15, (int)nodesArray[i].getY() + 320 -15, 30, 30);
                 g.setPaint(Color.white);
                 g.fillOval((int)nodesArray[i].getX() + 320 - 14, (int)nodesArray[i].getY() + 320 -14, 28, 28);
+                g.setPaint(Color.PINK);
+                g.drawString(i.toString(), (int)nodesArray[i].getX() + 320, (int)nodesArray[i].getY() + 320);
 
                 //g.drawLine((int)nodesArray[i].getX() + 320 - 5, (int)nodesArray[i].getY() + 320 -5,)
 
