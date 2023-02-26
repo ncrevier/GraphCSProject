@@ -77,8 +77,8 @@ public class RendererPanel extends JPanel implements ActionListener{
                 g.drawOval((int)nodesArray[i].getX() + 320 - 15, (int)nodesArray[i].getY() + 320 -15, 30, 30);
                 g.setPaint(Color.white);
                 g.fillOval((int)nodesArray[i].getX() + 320 - 14, (int)nodesArray[i].getY() + 320 -14, 28, 28);
-                g.setPaint(new Color(20,20,2));
-                g.drawString(i.toString(), (int)nodesArray[i].getX() + 320 - 15, (int)nodesArray[i].getY() + 320 -15);
+                g.setPaint(Color.PINK);
+                g.drawString(i.toString(), (int)nodesArray[i].getX() + 320, (int)nodesArray[i].getY() + 320);
 
                 //g.drawLine((int)nodesArray[i].getX() + 320 - 5, (int)nodesArray[i].getY() + 320 -5,)
 
