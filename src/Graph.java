@@ -15,7 +15,16 @@ public class Graph {
 
             }
         }
+        for (int i =0; i< size; i++) {
+            addNode();
+        }
 
+    }
+
+
+    public void addNode() {
+        matrix[nodes][nodes] = 0;
+        nodes++;
     }
 
     public void addEdge(int n1, int n2, int cost) {
