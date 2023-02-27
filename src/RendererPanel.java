@@ -43,7 +43,7 @@ public class RendererPanel extends JPanel implements ActionListener{
                 buttons[x].addActionListener(this);
 
                 buttons[x].setEnabled(true);
-                buttons[x].setVisible(false);
+                buttons[x].setVisible(true);
             }
             game = ga;
 
@@ -151,16 +151,16 @@ public class RendererPanel extends JPanel implements ActionListener{
         public void actionPerformed(ActionEvent e) {
             if(e.getSource() == buttonDemo) {
                 textDemo += "0";
-                repaint();
             }
 
             for (Integer x=0;x<NumOfNodes;x++) {
                 if (e.getSource() == buttons[x]) {
 //                    textDemo += x;
                     game.ButtonPressed(x);
-                    repaint();
+
                 }
             }
+            repaint();
         }
 
 }

@@ -23,6 +23,7 @@ public class Game implements ActionListener{
         numNodesSelected = 0;
 
         myTimer = new Timer(1000, this);
+        myTimer.start();
         time = timeGiven;
         runGame();
     }
@@ -31,7 +32,7 @@ public class Game implements ActionListener{
         boolean ended = false;
         System.out.println("game started");
         while(time > 0){
-           System.out.println(""); //why does this have to exist?
+           int x = 5; //why does this have to exist?
         }
         System.out.println("Game ended!");
         return selectedNodes;
@@ -66,10 +67,9 @@ public class Game implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e){
-        System.out.println(time);
         if (e.getSource() == myTimer){
             time--;
-            System.out.println(time);
+            myframe.theRenderer.actionPerformed(e);
         }
     }
 
