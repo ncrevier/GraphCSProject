@@ -14,8 +14,10 @@ public class RendererPanel extends JPanel implements ActionListener{
         Graphics2D g2D;
 
         Integer[][] colors;
+        // a 2D array, storing a 1 for "selected" (color green) and 0 for "unselected" (black). simil
 
         JButton buttons[];
+        // an array of buttons, one for each node.
         Game game;
 
 
@@ -29,6 +31,7 @@ public class RendererPanel extends JPanel implements ActionListener{
             nodesArray = theGraph.graphMaker();
             NumOfNodes = theGraph.nodes;
             colors = new Integer[gr.matrix.length][gr.matrix.length];
+            // setting the color matrix as same size of the same matrix of the graph.
             for (int i = 0; i < NumOfNodes; i++) {
                 for (int j = 0; j < NumOfNodes; j++) {
                     colors[i][j] = 0;
@@ -40,7 +43,7 @@ public class RendererPanel extends JPanel implements ActionListener{
                 buttons[x].addActionListener(this);
 
                 buttons[x].setEnabled(true);
-                buttons[x].setVisible(true);
+                buttons[x].setVisible(false);
             }
             game = ga;
 

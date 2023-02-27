@@ -2,7 +2,7 @@
 public class tester {
 
     public static void main(String[] args) {
-        Graph myG = new Graph(50);
+        Graph myG = new Graph(10);
 //        System.out.println(myG);
         myG.randomlyGenerate(4, 50);
         System.out.println(myG);
@@ -15,7 +15,7 @@ public class tester {
 //        }
 //        System.out.println("Showing Bryan how GIT works");
 //        System.out.println("testing");
-        RendererFrame rf = new RendererFrame(500, 500, "wow", myG);
+        Game game = new Game(6, 5, 50, 5);
 
 
     }
