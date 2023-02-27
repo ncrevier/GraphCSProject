@@ -60,35 +60,18 @@ public class RendererPanel extends JPanel implements ActionListener{
 
     public void paint(Graphics g) {
 
-
-
             g2D = (Graphics2D) g;
-            //casting down
-//            g2D.setPaint(new Color(20,20,2));
-//            g2D.fillOval(310, 310, 20, 20);
 
             g2D.setFont(new Font("Helvetica", Font.ITALIC, 20));
             g2D.drawString("Timer: " + game.time, 530, 30);
 
-//            buttonDemo.setBounds(310,310,20,20);
-
-//            buttonDemo.setEnabled(true);
-
-//            this.add(buttonDemo);
             renderLines(g2D);
             renderNodes(g2D);
             for (int x=0;x<NumOfNodes;x++){
                 this.add(buttons[x]);
                 buttons[x].setBounds((int)nodesArray[x].getX()+320-20, (int)nodesArray[x].getY()+320-20, 40,40);
             }
-
-
-
-
-
-            //g2D.drawImage(image, coordinates);
         }
-
         public void renderLines(Graphics2D g){
             for (int i = 0; i < NumOfNodes; i++) {
                 for (int j = i; j < NumOfNodes; j++) {
