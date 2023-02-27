@@ -5,7 +5,7 @@ public class RendererFrame extends JFrame {
 
     RendererPanel theRenderer;
 
-    public RendererFrame(int width, int height, String title, Graph g) {
+    public RendererFrame(int width, int height, String title, Graph gr, Game ga) {
         this.setTitle(title);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
@@ -13,7 +13,7 @@ public class RendererFrame extends JFrame {
         // sets the width: 640px and height: 640px
         this.getContentPane().setBackground(new Color(200, 90, 145));
 
-        theRenderer = new RendererPanel(width, height, g);
+        theRenderer = new RendererPanel(width, height, gr, ga);
 
         this.add(theRenderer);
         this.pack();

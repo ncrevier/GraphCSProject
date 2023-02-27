@@ -13,39 +13,74 @@ public class RendererPanel extends JPanel implements ActionListener{
         String textDemo;
         Graphics2D g2D;
 
+        Integer[][] colors;
 
-        RendererPanel(int width, int height, Graph gr){
+        JButton buttons[];
+        Game game;
+
+
+    RendererPanel(int width, int height, Graph gr, Game ga){
             //image = new ImageIcon("").getImage();
             this.setPreferredSize(new Dimension(640,640));
-            buttonDemo = new JButton();
-            buttonDemo.addActionListener(this);
+//            buttonDemo = new JButton();
+//            buttonDemo.addActionListener(this);
             textDemo = "";
-            NumOfNodes = 0;
             theGraph = gr;
             nodesArray = theGraph.graphMaker();
             NumOfNodes = theGraph.nodes;
+            colors = new Integer[gr.matrix.length][gr.matrix.length];
+            for (int i = 0; i < NumOfNodes; i++) {
+                for (int j = 0; j < NumOfNodes; j++) {
+                    colors[i][j] = 0;
+                }
+            }
+            buttons = new JButton[NumOfNodes];
+            for (int x=0;x<NumOfNodes;x++){
+                buttons[x] = new JButton();
+                buttons[x].addActionListener(this);
+
+                buttons[x].setEnabled(true);
+                buttons[x].setVisible(true);
+            }
+            game = ga;
+
 
         }
 
-        public void paint(Graphics g) {
+    public void changeLineColor(int n1, int n2){
+        colors[n1][n2] = 1;
+        colors[n2][n1] = 1;
+
+    }
+
+
+
+    public void paint(Graphics g) {
 
 
 
             g2D = (Graphics2D) g;
             //casting down
-            g2D.setPaint(new Color(20,20,2));
-            g2D.fillOval(310, 310, 20, 20);
+//            g2D.setPaint(new Color(20,20,2));
+//            g2D.fillOval(310, 310, 20, 20);
 
             g2D.setFont(new Font("Helvetica", Font.ITALIC, 20));
-            g2D.drawString(textDemo, 230, 250);
+            g2D.drawString("Timer: " + game.time, 530, 30);
 
-            buttonDemo.setBounds(310,310,20,20);
+//            buttonDemo.setBounds(310,310,20,20);
 
-            buttonDemo.setEnabled(true);
+//            buttonDemo.setEnabled(true);
 
-            this.add(buttonDemo);
+//            this.add(buttonDemo);
             renderLines(g2D);
             renderNodes(g2D);
+            for (int x=0;x<NumOfNodes;x++){
+                this.add(buttons[x]);
+                buttons[x].setBounds((int)nodesArray[x].getX()+320-20, (int)nodesArray[x].getY()+320-20, 40,40);
+            }
+
+
+
 
 
             //g2D.drawImage(image, coordinates);
@@ -54,8 +89,24 @@ public class RendererPanel extends JPanel implements ActionListener{
         public void renderLines(Graphics2D g){
             for (int i = 0; i < NumOfNodes; i++) {
                 for (int j = i; j < NumOfNodes; j++) {
-                    g.drawLine((int)nodesArray[i].getX() + 320, (int)nodesArray[i].getY() + 320, (int)nodesArray[j].getX() + 320, (int)nodesArray[j].getY() + 320);
-                    g.setPaint(desiredPaint);
+                    if (!((nodesArray[i].connections())[j]==0)){
+                        int x1 = (int)nodesArray[i].getX() + 320;
+                        int y1 = (int)nodesArray[i].getY() + 320;
+                        int x2 = (int)nodesArray[j].getX() + 320;
+                        int y2 = (int)nodesArray[j].getY() + 320;
+                        if(colors[i][j] == 0){
+                            g.setPaint(Color.BLACK);
+                        }
+                        else{
+                            g.setPaint(Color.green);
+                        }
+                        //g.setStroke();
+                        g.drawLine(x1, y1, x2, y2);
+
+
+                        g.drawString(String.valueOf((nodesArray[i].connections())[j]), (x1+x2)/2, (y1+y2)/2);
+                    }
+
                 }
 
             }
@@ -64,11 +115,13 @@ public class RendererPanel extends JPanel implements ActionListener{
 
         public void renderNodes(Graphics2D g) {
 
-            for (int i = 0; i < NumOfNodes; i++) {
+            for (Integer i = 0; i < NumOfNodes; i++) {
                 g.setPaint(Color.BLACK);
-                g.drawOval((int)nodesArray[i].getX() + 320 - 15, (int)nodesArray[i].getY() + 320 -15, 30, 30);
+                g.drawOval((int)nodesArray[i].getX() + 320 - 20, (int)nodesArray[i].getY() + 320 -20, 40, 40);
                 g.setPaint(Color.white);
-                g.fillOval((int)nodesArray[i].getX() + 320 - 14, (int)nodesArray[i].getY() + 320 -14, 28, 28);
+                g.fillOval((int)nodesArray[i].getX() + 320 - 19, (int)nodesArray[i].getY() + 320 -19, 38, 38);
+                g.setPaint(Color.PINK);
+                g.drawString(i.toString(), (int)nodesArray[i].getX() + 320-5, (int)nodesArray[i].getY() + 320+5);
 
                 //g.drawLine((int)nodesArray[i].getX() + 320 - 5, (int)nodesArray[i].getY() + 320 -5,)
 
@@ -97,33 +150,14 @@ public class RendererPanel extends JPanel implements ActionListener{
                 textDemo += "0";
                 repaint();
             }
+
+            for (Integer x=0;x<NumOfNodes;x++) {
+                if (e.getSource() == buttons[x]) {
+//                    textDemo += x;
+                    game.ButtonPressed(x);
+                    repaint();
+                }
+            }
         }
-
-
-
-
-
-
-    /*
-    interpreter:
-[0 1 2 3 4]
-[1 0 4 5 6]
-[2 4 0 7 8]
-[3 5 7 0 6]
-[4 6 8 6 0]
-
-on row 0, it will start on index 0 (making circles and connection with each node.
-on row 1, it will start on index 1 (skipping the node already made w/ node 0) and go through.
-etc. etc.
-
-maybe make a "node" class for the drawing of nodes
-attributes:
-int[] paths = the row that the node applies to.
-int xcoord = x coord
-int ycoord = y coord
-
-     */
-
-
 
 }
