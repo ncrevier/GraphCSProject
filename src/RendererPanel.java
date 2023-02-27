@@ -14,8 +14,10 @@ public class RendererPanel extends JPanel implements ActionListener{
         Graphics2D g2D;
 
         Integer[][] colors;
+        // a 2D array, storing a 1 for "selected" (color green) and 0 for "unselected" (black). simil
 
         JButton buttons[];
+        // an array of buttons, one for each node.
         Game game;
 
 
@@ -29,6 +31,7 @@ public class RendererPanel extends JPanel implements ActionListener{
             nodesArray = theGraph.graphMaker();
             NumOfNodes = theGraph.nodes;
             colors = new Integer[gr.matrix.length][gr.matrix.length];
+            // setting the color matrix as same size of the same matrix of the graph.
             for (int i = 0; i < NumOfNodes; i++) {
                 for (int j = 0; j < NumOfNodes; j++) {
                     colors[i][j] = 0;
@@ -47,45 +50,31 @@ public class RendererPanel extends JPanel implements ActionListener{
 
         }
 
-    public void changeLineColor(int n1, int n2){
+    public void changeLineColor(int n1, int n2) {
         colors[n1][n2] = 1;
         colors[n2][n1] = 1;
-
     }
 
 
 
     public void paint(Graphics g) {
 
-
-
             g2D = (Graphics2D) g;
-            //casting down
-//            g2D.setPaint(new Color(20,20,2));
-//            g2D.fillOval(310, 310, 20, 20);
+            g2D.setPaint(Color.PINK);
+            g2D.fillRect(0,0,640,640);
+
 
             g2D.setFont(new Font("Helvetica", Font.ITALIC, 20));
             g2D.drawString("Timer: " + game.time, 530, 30);
 
-//            buttonDemo.setBounds(310,310,20,20);
-
-//            buttonDemo.setEnabled(true);
-
-//            this.add(buttonDemo);
             renderLines(g2D);
             renderNodes(g2D);
+
             for (int x=0;x<NumOfNodes;x++){
                 this.add(buttons[x]);
                 buttons[x].setBounds((int)nodesArray[x].getX()+320-20, (int)nodesArray[x].getY()+320-20, 40,40);
             }
-
-
-
-
-
-            //g2D.drawImage(image, coordinates);
         }
-
         public void renderLines(Graphics2D g){
             for (int i = 0; i < NumOfNodes; i++) {
                 for (int j = i; j < NumOfNodes; j++) {
@@ -148,16 +137,16 @@ public class RendererPanel extends JPanel implements ActionListener{
         public void actionPerformed(ActionEvent e) {
             if(e.getSource() == buttonDemo) {
                 textDemo += "0";
-                repaint();
             }
 
             for (Integer x=0;x<NumOfNodes;x++) {
                 if (e.getSource() == buttons[x]) {
 //                    textDemo += x;
                     game.ButtonPressed(x);
-                    repaint();
+
                 }
             }
+            repaint();
         }
 
 }
