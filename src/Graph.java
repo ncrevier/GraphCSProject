@@ -131,7 +131,13 @@ public class Graph {
         }
         return nod;
     }
+
+    public int getSize() {
+        return nodes;
+    }
 }
+
+
 
 
 

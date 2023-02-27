@@ -1,33 +1,24 @@
+import java.util.*;
 public class Pnode {
-    private int fCost;
-    private int gCost;
-    private int hCost;
-    private int val;
-    public Pnode(int v) {
-        val = v;
+
+    private Integer dist = Integer.MAX_VALUE;
+    private LinkedList<Pnode> shortestPath = new LinkedList<>();
+    private int[] adjacentNodes;
+
+    public int getDistance() {
+        return dist;
     }
 
-    public void calculateFCost() {
-        fCost = gCost + hCost;
-    }
-    public void calculateGCost() {
-
-    }
-    public void calculateHCost() {
-
+    public Pnode(int[] adj) {
+        adjacentNodes = adj;
     }
 
-    public int getFCost() {
-        return fCost;
+    public int[] getAdjacentNodes() {
+        return adjacentNodes;
     }
-    public int getGCost() {
-        return gCost;
+    public int setDistance(int newDist) {
+        dist = newDist;
     }
-    public  int getHCost() {
-        return hCost;
-    }
-    public int getVal() {
-        return val;
-    }
+
 
 }
