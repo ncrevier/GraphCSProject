@@ -6,6 +6,7 @@ public class RendererFrame extends JFrame {
     RendererPanel theRenderer;
 
     public RendererFrame(int width, int height, String title, Graph gr, Game ga) {
+        //All the boring defaults
         this.setTitle(title);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
@@ -17,6 +18,7 @@ public class RendererFrame extends JFrame {
 
         this.add(theRenderer);
         this.pack();
+        //Fits the panel with the frame, now we can basically ignore the frame
 
     }
 }
