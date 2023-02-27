@@ -11,6 +11,8 @@ public class Game implements ActionListener{
     Timer myTimer;
     int time;
     int uselessTask;
+    boolean gameWon;
+    boolean done;
 
 
     Game(int nodesNum, int maxDistance, int percentZeros, int timeGiven){
@@ -21,25 +23,16 @@ public class Game implements ActionListener{
         selectedNodes = new int[numNodes];
         selectedNodes[0] = 0;
         numNodesSelected = 0;
+        gameWon = false;
+        done = false;
+
+
 
         myTimer = new Timer(1000, this);
         myTimer.start();
         time = timeGiven;
-        runGame();
-    }
-
-    public int[] runGame(){
-        boolean ended = false;
-        System.out.println("game started");
-        while(time > 0){
-           int x = 5; //why does this have to exist?
-        }
-        System.out.println("Game ended!");
-        return selectedNodes;
-
 
     }
-
 
     public void ButtonPressed(int Node) {
         boolean alreadySelected = false;
@@ -59,17 +52,33 @@ public class Game implements ActionListener{
         }
         if(Node == (int)(numNodes/2)){
             //since that is our end goal
-            time = 0;
-            System.out.println("You found it!");
+
+            gameWon = true;
 
         }
     }
 
     @Override
     public void actionPerformed(ActionEvent e){
+
         if (e.getSource() == myTimer){
-            time--;
-            myframe.theRenderer.actionPerformed(e);
+            if(!done) {
+
+                if (gameWon == true || time <= 0) {
+                    if (gameWon) {
+                        myframe.theRenderer.gameWon = true;
+                    } else {
+                        myframe.theRenderer.gameLost = true;
+                    }
+
+                    myframe.theRenderer.repaint();
+                    done = true;
+                } else {
+
+                    time--;
+                    myframe.theRenderer.actionPerformed(e);
+                }
+            }
         }
     }
 

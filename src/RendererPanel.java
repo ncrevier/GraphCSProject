@@ -9,7 +9,7 @@ public class RendererPanel extends JPanel implements ActionListener{
         Graph theGraph;
         int NumOfNodes;
         Button[] buttonArray;
-        JButton buttonDemo;
+        JButton quitButton;
         String textDemo;
         Graphics2D g2D;
 
@@ -20,12 +20,15 @@ public class RendererPanel extends JPanel implements ActionListener{
         // an array of buttons, one for each node.
         Game game;
 
+        boolean gameWon;
+        boolean gameLost;
+
 
     RendererPanel(int width, int height, Graph gr, Game ga){
             //image = new ImageIcon("").getImage();
             this.setPreferredSize(new Dimension(640,640));
-//            buttonDemo = new JButton();
-//            buttonDemo.addActionListener(this);
+            quitButton = new JButton();
+            quitButton.addActionListener(this);
             textDemo = "";
             theGraph = gr;
             nodesArray = theGraph.graphMaker();
@@ -45,7 +48,10 @@ public class RendererPanel extends JPanel implements ActionListener{
                 buttons[x].setEnabled(true);
                 buttons[x].setVisible(true);
             }
+            quitButton.setEnabled(true);
+            quitButton.setVisible(true);
             game = ga;
+            gameWon = false;
 
 
         }
@@ -58,22 +64,37 @@ public class RendererPanel extends JPanel implements ActionListener{
 
 
     public void paint(Graphics g) {
+        if(!gameWon && !gameLost) {
+
 
             g2D = (Graphics2D) g;
             g2D.setPaint(Color.PINK);
-            g2D.fillRect(0,0,640,640);
+            g2D.fillRect(0, 0, 640, 640);
+
 
 
             g2D.setFont(new Font("Helvetica", Font.ITALIC, 20));
+            g2D.setPaint(Color.BLACK);
             g2D.drawString("Timer: " + game.time, 530, 30);
+
 
             renderLines(g2D);
             renderNodes(g2D);
 
-            for (int x=0;x<NumOfNodes;x++){
+            for (int x = 0; x < NumOfNodes; x++) {
                 this.add(buttons[x]);
-                buttons[x].setBounds((int)nodesArray[x].getX()+320-20, (int)nodesArray[x].getY()+320-20, 40,40);
+                buttons[x].setBounds((int) nodesArray[x].getX() + 320 - 20, (int) nodesArray[x].getY() + 320 - 20, 40, 40);
             }
+            this.add(quitButton);
+            quitButton.setBounds(30, 30, 30, 30);
+            g2D.setPaint(Color.RED);
+            g2D.drawRect(30, 30, 30, 30);
+        }
+        else{
+            endGame(g);
+        }
+
+
         }
         public void renderLines(Graphics2D g){
             for (int i = 0; i < NumOfNodes; i++) {
@@ -129,23 +150,45 @@ public class RendererPanel extends JPanel implements ActionListener{
 
         }
 
+        public void endGame(Graphics g){
+
+            Graphics2D g2 = (Graphics2D) g;
+            System.out.println(gameWon);
+            g2.setPaint(Color.PINK);
+            g2.fillRect(0, 0, 640, 640);
+            System.out.println("ended");
+
+            if(gameWon){
+                g2.setPaint(Color.BLACK);
+                g2.drawString("YOU WINNED ", 320, 320);
+                System.out.println("winned");
+            }
+            else{
+                g2.setPaint(Color.BLACK);
+                g2.drawString("YOU LOST ", 320, 320);
+                System.out.println("lost");
+            }
+        }
+
 
 
 
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(e.getSource() == buttonDemo) {
-                textDemo += "0";
-            }
 
             for (Integer x=0;x<NumOfNodes;x++) {
                 if (e.getSource() == buttons[x]) {
 //                    textDemo += x;
                     game.ButtonPressed(x);
 
+
                 }
             }
+            if(e.getSource() == quitButton){
+                game.time = 0;
+            }
+
             repaint();
         }
 
