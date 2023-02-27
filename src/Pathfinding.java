@@ -18,7 +18,7 @@ public class Pathfinding {
 
 
         for (int i = 0; i<coolerGraph.length; i++) {
-            if (i != 0) {
+            if (open.poll().getAdjacentNodes()[i] == 0) {
                 coolerGraph[i].setDistance(start.getAdjacentNodes()[i]);
             }
         }

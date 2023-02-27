@@ -1,8 +1,7 @@
 import java.util.*;
-public class Pnode {
+public class Pnode implements Comparable<Pnode> {
 
     private Integer dist = Integer.MAX_VALUE;
-    private LinkedList<Pnode> shortestPath = new LinkedList<>();
     private int[] adjacentNodes;
 
     public int getDistance() {
@@ -18,6 +17,15 @@ public class Pnode {
     }
     public int setDistance(int newDist) {
         dist = newDist;
+    }
+    @Override
+    public int compareTo(Pnode otherPnode) {
+        if (this.dist > otherPnode.getDistance()) {
+            return 1;
+        } else if (this.dist < otherPnode.getDistance()) {
+            return -1;
+        }
+        return 0;
     }
 
 
