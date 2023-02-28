@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="86385375-5084-4ade-a6a5-9309f8c996c2" name="Changes" comment="comment">
+    <list default="true" id="86385375-5084-4ade-a6a5-9309f8c996c2" name="Changes" comment="pathfinding made">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pathfinding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pathfinding.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pnode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pnode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tester.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +161,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677533160952</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="pathfinding made">
+      <created>1677615848219</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1677615848219</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -188,6 +196,7 @@
     <MESSAGE value="accidentally broke graph whoops" />
     <MESSAGE value="i broke my buttons" />
     <MESSAGE value="comment" />
-    <option name="LAST_COMMIT_MESSAGE" value="comment" />
+    <MESSAGE value="pathfinding made" />
+    <option name="LAST_COMMIT_MESSAGE" value="pathfinding made" />
   </component>
 </project>
