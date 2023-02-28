@@ -61,11 +61,12 @@ public class Game implements ActionListener{
             myframe.theRenderer.changeLineColor(selectedNodes[numNodesSelected], selectedNodes[numNodesSelected+1]);
             //Highlights line
             numNodesSelected++;
+            if(Node == (int)(numNodes/2)){
+                //Our end goal is to get from one side to the other
+                gameWon = true;
+            }
         }
-        if(Node == (int)(numNodes/2)){
-            //Our end goal is to get from one side to the other
-            gameWon = true;
-        }
+
     }
 
     @Override
