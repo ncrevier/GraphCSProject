@@ -22,10 +22,12 @@ public class Pathfinding {
         List<Pnode> closed = new ArrayList<Pnode>();
         start = coolerGraph[s_s];
         finish = coolerGraph[f_f];
+        System.out.println("finish adjnodes " + finish.getAdjacentNodes());
 
         // your values will be in a matrix w/ index corresponding to node # in graph
         PriorityQueue<Pnode> frontier = new PriorityQueue<Pnode>();
         start.setDistance(0);
+        System.out.println("start adjNodes " + start.getAdjacentNodes());
         frontier.add(start);
 
         while (!frontier.isEmpty()) {
@@ -40,12 +42,15 @@ public class Pathfinding {
                     // we set its new dist to the curr node dist + the dist from curr to it.
                     coolerGraph[i].setDistance(curr.getAdjacentDistances()[i] + curr.getDistance());
                     System.out.println(i + " to start :: " + coolerGraph[i].getDistance());
+                    System.out.println(i + "the adjNodes :: " +coolerGraph[i].getAdjacentNodes());
                     // this node is now our new frontier.
                     frontier.add(coolerGraph[i]);
                 } else {
                     if (curr.getDistance() + curr.getAdjacentDistances()[i] <= coolerGraph[i].getDistance()) {
                         coolerGraph[i].setDistance(curr.getDistance() + curr.getAdjacentDistances()[i]);
                         System.out.println(i + " to start :: " + coolerGraph[i].getDistance());
+                        System.out.println(i + "the adjNodes :: " +coolerGraph[i].getAdjacentNodes());
+
 
                     }
                 }

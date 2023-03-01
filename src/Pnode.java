@@ -18,7 +18,7 @@ public class Pnode implements Comparable<Pnode>{
         adjacentDistance = adj;
         adjacentNodes = new ArrayList<Integer>(adj.length);
         for (int i=0;i<adj.length;i++){
-            if (i>0){
+            if (adjacentDistance[i]>0){
                 adjacentNodes.add(i);
             }
         }
