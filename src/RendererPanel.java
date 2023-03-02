@@ -12,8 +12,6 @@ public class RendererPanel extends JPanel implements ActionListener{
         //A quit button
         JButton startButton;
         //Start button
-        JButton restart;
-        // restarting the game
         JButton easyButton;
         JButton mediumButton;
         JButton hardButton;
@@ -45,11 +43,6 @@ public class RendererPanel extends JPanel implements ActionListener{
             startButton.addActionListener(this);
             startButton.setEnabled(true);
             startButton.setVisible(true);
-
-        restart = new JButton();
-        restart.addActionListener(this);
-        restart.setEnabled(true);
-        restart.setVisible(true);
 
             easyButton = new JButton();
             easyButton.addActionListener(this);
@@ -230,8 +223,6 @@ public class RendererPanel extends JPanel implements ActionListener{
             //Again, downcasting
             g2.setPaint(Color.PINK);
             g2.fillRect(0, 0, 640, 640);
-            this.add(restart);
-            restart.setBounds(320, 450, 240, 40);
             //Clearing the board
             if(gameState == 1){
                 g2.setPaint(Color.BLACK);
@@ -286,13 +277,6 @@ public class RendererPanel extends JPanel implements ActionListener{
                 gameState = 0;
                 game.startGame(11, 30, 50, 15);
                 removeButtons();
-            }
-            if(e.getSource() == restart){
-                gameState = 3;
-//                game.startGame(11, 30, 50, 15);
-                removeButtons();
-                this.remove(restart);
-                this.remove(quitButton);
             }
             repaint();
         }
