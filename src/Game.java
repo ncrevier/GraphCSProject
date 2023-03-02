@@ -4,6 +4,7 @@ import javax.swing.*;
 
 public class Game implements ActionListener{
     Graph myGraph;
+    Pathfinding myPather;
     RendererFrame myframe;
     int[] selectedNodes;
     //Nodes that have been so far selected, in order, starting from the 0th node
@@ -32,6 +33,7 @@ public class Game implements ActionListener{
         //We don't count the starting node as a selected node
         gameWon = false;
         done = false;
+        myPather = new Pathfinding(0, (int)(nodesNum/2), myGraph);
 
 
 
