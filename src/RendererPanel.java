@@ -123,11 +123,11 @@ public class RendererPanel extends JPanel implements ActionListener{
             g2D.setPaint(Color.PINK);
             g2D.fillRect(0, 0, 640, 640);
             g2D.setPaint(Color.BLACK);
-            g2D.drawString("HELLO DO YOU WANT START? ", 240, 200);
+            g2D.drawString("DO YOU WANT START? ", 240, 200);
             this.add(startButton);
             startButton.setBounds(280, 400, 80, 50);
             g2D.setPaint(Color.BLACK);
-            g2D.drawString("START", 305, 420);
+            g2D.drawString("START", 302, 428);
             g2D.drawRect(280, 400, 80, 50);
 
 
@@ -136,7 +136,7 @@ public class RendererPanel extends JPanel implements ActionListener{
             g2D.setPaint(Color.PINK);
             g2D.fillRect(0, 0, 640, 640);
             g2D.setPaint(Color.BLACK);
-            g2D.drawString("SELECT UR THING ", 270, 200);
+            g2D.drawString("SELECT YOUR DIFFICULTY ", 250, 200);
 
 
             this.add(easyButton);
@@ -160,7 +160,7 @@ public class RendererPanel extends JPanel implements ActionListener{
             this.add(impossibleButton);
             g2D.setPaint(Color.BLACK);
             impossibleButton.setBounds(200, 450, 240, 40);
-            g2D.drawString("IMOSSIBLE", 295, 470);
+            g2D.drawString("IMPOSSIBLE", 295, 470);
             g2D.drawRect(200, 450, 240, 40);
             g2D.drawString("From Node 0 to Node 5", 450, 470);
 
@@ -226,11 +226,11 @@ public class RendererPanel extends JPanel implements ActionListener{
             //Clearing the board
             if(gameState == 1){
                 g2.setPaint(Color.BLACK);
-                g2.drawString("YOU WINNED, Distance: " + game.scoreOfPathPlayer + " and best distance: " + game.scoreOfPathAlgorithm, 320, 320);
+                g2.drawString("YOU WON! Distance: " + game.scoreOfPathPlayer + " and best distance: " + game.scoreOfPathAlgorithm, 320, 320);
             }
             else if(gameState == 2){
                 g2.setPaint(Color.BLACK);
-                g2.drawString("YOU FAILED ", 320, 320);
+                g2.drawString("YOU LOST :(", 320, 320);
             }
         }
 
