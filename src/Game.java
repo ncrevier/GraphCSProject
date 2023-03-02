@@ -9,6 +9,8 @@ public class Game implements ActionListener{
     int[] selectedNodes;
     //Nodes that have been so far selected, in order, starting from the 0th node
     int numNodesSelected;
+    int scoreOfPathPlayer;
+    int scoreOfPathAlgorithm;
     int numNodes;
     Timer myTimer;
     int time;
@@ -17,6 +19,7 @@ public class Game implements ActionListener{
     //A boolean for winning specifically
     boolean done;
     //A boolean for being "done", so that actionPerformed stops running after the game is finished
+
 
 
     Game(int nodesNum, int maxDistance, int percentZeros, int timeGiven){
@@ -34,6 +37,8 @@ public class Game implements ActionListener{
         gameWon = false;
         done = false;
         myPather = new Pathfinding(0, (int)(nodesNum/2), myGraph);
+        scoreOfPathPlayer = 0;
+        scoreOfPathAlgorithm = myPather.findPath();
 
 
 
@@ -66,6 +71,11 @@ public class Game implements ActionListener{
             if(Node == (int)(numNodes/2)){
                 //Our end goal is to get from one side to the other
                 gameWon = true;
+                for (int i = 0; i < numNodesSelected; i++) {
+                    scoreOfPathPlayer = scoreOfPathPlayer + myGraph.getCost(selectedNodes[i], selectedNodes[i+1]);
+                    //Continuously adds the cost between each node, for total player distance
+
+                }
             }
         }
 

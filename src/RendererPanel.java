@@ -141,11 +141,11 @@ public class RendererPanel extends JPanel implements ActionListener{
             //Clearing the board
             if(gameState == 1){
                 g2.setPaint(Color.BLACK);
-                g2.drawString("YOU WINNED ", 320, 320);
+                g2.drawString("YOU WINNED, Distance: " + game.scoreOfPathPlayer + " and best distance: " + game.scoreOfPathAlgorithm, 320, 320);
             }
             else if(gameState == 2){
                 g2.setPaint(Color.BLACK);
-                g2.drawString("YOU LOST ", 320, 320);
+                g2.drawString("YOU FAILED ", 320, 320);
             }
         }
         @Override
