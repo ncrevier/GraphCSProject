@@ -22,30 +22,44 @@ public class Game implements ActionListener{
 
 
 
-    Game(int nodesNum, int maxDistance, int percentZeros, int timeGiven){
-        numNodes = nodesNum;
-        myGraph = new Graph(numNodes);
-        myGraph.randomlyGenerate(maxDistance, percentZeros);
-        myframe = new RendererFrame(500,500,"Pathfinder!", myGraph, this);
+    Game(){
+
+        myframe = new RendererFrame(500,500,"Pathfinder!", this);
         //Makes a frame for rendering
-        selectedNodes = new int[numNodes];
-        //This array will have those nodes in order, then the rest will be null
-        selectedNodes[0] = 0;
+
         //Starts at 0
         numNodesSelected = 0;
         //We don't count the starting node as a selected node
         gameWon = false;
         done = false;
-        myPather = new Pathfinding(0, (int)(nodesNum/2), myGraph);
+
         scoreOfPathPlayer = 0;
+
+
+
+
+
+
+        //Starting a timer
+
+    }
+
+    public void startGame(int nodesNum, int maxDistance, int percentZeros, int timeGiven){
+        time = timeGiven;
+        numNodes = nodesNum;
+        myGraph = new Graph(numNodes);
+        myGraph.randomlyGenerate(maxDistance, percentZeros);
+        selectedNodes = new int[numNodes];
+        //This array will have those nodes in order, then the rest will be null
+        selectedNodes[0] = 0;
+        myframe.theRenderer.setGraph(myGraph);
+        myPather = new Pathfinding(0, (int)(nodesNum/2), myGraph);
         scoreOfPathAlgorithm = myPather.findPath();
-
-
 
         myTimer = new Timer(1000, this);
         myTimer.start();
-        time = timeGiven;
-        //Starting a timer
+
+
 
     }
 
