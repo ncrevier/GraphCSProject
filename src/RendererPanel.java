@@ -144,21 +144,25 @@ public class RendererPanel extends JPanel implements ActionListener{
             easyButton.setBounds(200, 300, 240, 40);
             g2D.drawString("EASY", 310, 320);
             g2D.drawRect(200, 300, 240, 40);
+            g2D.drawString("From Node 0 to Node 2", 450, 320);
             this.add(mediumButton);
             g2D.setPaint(Color.orange);
             mediumButton.setBounds(200, 350, 240, 40);
             g2D.drawString("MEDIUM", 300, 370);
             g2D.drawRect(200, 350, 240, 40);
+            g2D.drawString("From Node 0 to Node 3", 450, 370);
             this.add(hardButton);
             g2D.setPaint(Color.red);
             hardButton.setBounds(200, 400, 240, 40);
             g2D.drawString("HARD", 310, 420);
             g2D.drawRect(200, 400, 240, 40);
+            g2D.drawString("From Node 0 to Node 4", 450, 420);
             this.add(impossibleButton);
             g2D.setPaint(Color.BLACK);
             impossibleButton.setBounds(200, 450, 240, 40);
             g2D.drawString("IMOSSIBLE", 295, 470);
             g2D.drawRect(200, 450, 240, 40);
+            g2D.drawString("From Node 0 to Node 5", 450, 470);
 
         }
         else{
