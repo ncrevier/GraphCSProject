@@ -125,14 +125,14 @@ public class Graph {
     }
 
     public Node[] graphMaker(){
-        Node[] nod = new Node[this.nodes];
+        Node[] node = new Node[this.nodes];
         double theta = 2*Math.PI/nodes;
         for (int row=0; row < nodes; row++){
             double x = Math.cos(theta * row);
             double y = Math.sin(theta * row);
-            nod[row] = new Node( x*250,  y*250, matrix[row]);
+            node[row] = new Node( x*250,  y*250, matrix[row]);
         }
-        return nod;
+        return node;
     }
 
     public int getSize() {
