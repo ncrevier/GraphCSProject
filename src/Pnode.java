@@ -4,7 +4,7 @@ public class Pnode implements Comparable<Pnode>{
     //temporary distance value so we know its not been assigned anything yet
     private Integer dist = Integer.MAX_VALUE;
     //shortest path of node
-    private LinkedList<Pnode> shortestPath = new LinkedList<>();
+    private Integer shortestPath=null;
     //the node # of its adjacent nodes.
     private ArrayList<Integer> adjacentNodes;
     //distances to the adjacent nodes.
@@ -32,6 +32,11 @@ public class Pnode implements Comparable<Pnode>{
         return adjacentDistance;
     }
 
+    public void setNext(int node){
+        // this has to be the index of the node in the graph
+        shortestPath = node;
+    }
+
     @Override
     public int compareTo(Pnode node){
         if (this.dist == node.getDistance()){
@@ -46,6 +51,10 @@ public class Pnode implements Comparable<Pnode>{
     public int setDistance(int newDist) {
         dist = newDist;
         return dist;
+    }
+
+    public Integer getNext(){
+        return shortestPath;
     }
 
 

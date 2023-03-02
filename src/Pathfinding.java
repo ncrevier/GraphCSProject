@@ -43,6 +43,8 @@ public class Pathfinding {
                     coolerGraph[i].setDistance(curr.getAdjacentDistances()[i] + curr.getDistance());
                     System.out.println(i + " to start :: " + coolerGraph[i].getDistance());
                     System.out.println(i + "the adjNodes :: " +coolerGraph[i].getAdjacentNodes());
+                    System.out.println(curr.getNext());
+                    curr.setNext(i);
                     // this node is now our new frontier.
                     frontier.add(coolerGraph[i]);
                 } else {
@@ -50,6 +52,9 @@ public class Pathfinding {
                         coolerGraph[i].setDistance(curr.getDistance() + curr.getAdjacentDistances()[i]);
                         System.out.println(i + " to start :: " + coolerGraph[i].getDistance());
                         System.out.println(i + "the adjNodes :: " +coolerGraph[i].getAdjacentNodes());
+                        System.out.println(curr.getNext());
+                        curr.setNext(i);
+//                        System.out.println(c);
 
 
                     }
@@ -58,6 +63,14 @@ public class Pathfinding {
             // byebye current, you are being reassigned!
         }
         System.out.println("final ans:" + finish.getDistance());
+        Integer x = start.getNext();
+        System.out.println(x);
+        while (!(x == null)) {
+            System.out.println(x);
+            x = coolerGraph[x].getNext();
+            System.out.println(x);
+        }
+
         return finish.getDistance();
     }
 }

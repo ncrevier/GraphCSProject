@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="86385375-5084-4ade-a6a5-9309f8c996c2" name="Changes" comment="debugging pathfindings">
+    <list default="true" id="86385375-5084-4ade-a6a5-9309f8c996c2" name="Changes" comment="I FIXED PATHFINDING">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pathfinding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pathfinding.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pnode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pnode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tester.java" afterDir="false" />
@@ -176,7 +175,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677619200387</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="I FIXED PATHFINDING">
+      <created>1677633762115</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1677633762115</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,6 +212,7 @@
     <MESSAGE value="comment" />
     <MESSAGE value="pathfinding made" />
     <MESSAGE value="debugging pathfindings" />
-    <option name="LAST_COMMIT_MESSAGE" value="debugging pathfindings" />
+    <MESSAGE value="I FIXED PATHFINDING" />
+    <option name="LAST_COMMIT_MESSAGE" value="I FIXED PATHFINDING" />
   </component>
 </project>
