@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="86385375-5084-4ade-a6a5-9309f8c996c2" name="Changes" comment="I FIXED PATHFINDING">
+    <list default="true" id="86385375-5084-4ade-a6a5-9309f8c996c2" name="Changes" comment="trying to save nodes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pathfinding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pathfinding.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pnode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pnode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RendererPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RendererPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tester.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -182,7 +181,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677633762115</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="trying to save nodes">
+      <created>1677773426156</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1677773426156</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -213,6 +219,7 @@
     <MESSAGE value="pathfinding made" />
     <MESSAGE value="debugging pathfindings" />
     <MESSAGE value="I FIXED PATHFINDING" />
-    <option name="LAST_COMMIT_MESSAGE" value="I FIXED PATHFINDING" />
+    <MESSAGE value="trying to save nodes" />
+    <option name="LAST_COMMIT_MESSAGE" value="trying to save nodes" />
   </component>
 </project>
