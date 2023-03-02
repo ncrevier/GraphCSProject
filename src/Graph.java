@@ -50,7 +50,10 @@ public class Graph {
                 }
             }
         }
-        if (!noIslands()){
+        matrix[(int) (nodes/2)][0] = 0;
+        matrix[0][(int) (nodes/2)] = 0;
+        Pathfinding pf = new Pathfinding(0, (int) (nodes/2), this);
+        if (!noIslands() || (pf.findPath() < maxDistance*2)){
             randomlyGenerate(maxDistance, perchanceZeros);
         }
 
