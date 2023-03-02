@@ -10,6 +10,13 @@ public class RendererPanel extends JPanel implements ActionListener{
         int NumOfNodes;
         JButton quitButton;
         //A quit button
+        JButton startButton;
+        //Start button
+        JButton easyButton;
+        JButton mediumButton;
+        JButton hardButton;
+        JButton impossibleButton;
+
         Integer[][] colors;
         // a 2D array, storing a 1 for "selected" (color green) and 0 for "unselected" (black),
         //This specifies the colors of the lines between nodes
@@ -18,46 +25,78 @@ public class RendererPanel extends JPanel implements ActionListener{
         Game game;
         //A model of the original game object, this is passed down from game itself
         int gameState;
-        //0 is still going, 1 is won, 2 is lost
+        //0 is still going, 1 is won, 2 is lost, 3 is hasn't started, 4 is selecting difficulty
 
 
-    RendererPanel(int width, int height, Graph gr, Game ga){
+
+    RendererPanel(int width, int height, Game ga){
             this.setPreferredSize(new Dimension(640,640));
             //Defaults
-            theGraph = gr;
-            nodesArray = theGraph.graphMaker();
-            NumOfNodes = theGraph.nodes;
-            colors = new Integer[gr.matrix.length][gr.matrix.length];
-            // setting the color matrix as same size of the same matrix of the graph.
-            for (int i = 0; i < NumOfNodes; i++) {
-                for (int j = 0; j < NumOfNodes; j++) {
-                    colors[i][j] = 0;
-                }
-            }
-            buttons = new JButton[NumOfNodes];
-            for (int x=0;x<NumOfNodes;x++){
-                buttons[x] = new JButton();
-                buttons[x].addActionListener(this);
-                buttons[x].setEnabled(true);
-                buttons[x].setVisible(true);
-                //Defaults for each button to work
-            }
+
+
             quitButton = new JButton();
             quitButton.addActionListener(this);
             quitButton.setEnabled(true);
             quitButton.setVisible(true);
-            //Defaults for the quit button to work
+
+            startButton = new JButton();
+            startButton.addActionListener(this);
+            startButton.setEnabled(true);
+            startButton.setVisible(true);
+
+            easyButton = new JButton();
+            easyButton.addActionListener(this);
+            easyButton.setEnabled(true);
+            easyButton.setVisible(true);
+
+            mediumButton = new JButton();
+            mediumButton.addActionListener(this);
+            mediumButton.setEnabled(true);
+            mediumButton.setVisible(true);
+
+            hardButton = new JButton();
+            hardButton.addActionListener(this);
+            hardButton.setEnabled(true);
+            hardButton.setVisible(true);
+
+            impossibleButton = new JButton();
+            impossibleButton.addActionListener(this);
+            impossibleButton.setEnabled(true);
+            impossibleButton.setVisible(true);
+
+            //Defaults for the buttons to work
             //Setting the game
             game = ga;
-            gameState = 0;
+            gameState = 3;
         }
 
 
+    public void setGraph(Graph g){
+        theGraph = g;
+        nodesArray = theGraph.graphMaker();
+        NumOfNodes = theGraph.nodes;
+        colors = new Integer[g.matrix.length][g.matrix.length];
+        // setting the color matrix as same size of the same matrix of the graph.
+        for (int i = 0; i < NumOfNodes; i++) {
+            for (int j = 0; j < NumOfNodes; j++) {
+                colors[i][j] = 0;
+            }
+        }
+        buttons = new JButton[NumOfNodes];
+        for (int x=0;x<NumOfNodes;x++){
+            buttons[x] = new JButton();
+            buttons[x].addActionListener(this);
+            buttons[x].setEnabled(true);
+            buttons[x].setVisible(true);
+            //Defaults for each button to work
+        }
+    }
     public void paint(Graphics g) {
         //this method runs on creation and whenever "repaint" is called
+        Graphics2D g2D = (Graphics2D) g;
         if(gameState == 0) {
             //If the game isn't going anymore, no need for repainting
-            Graphics2D g2D = (Graphics2D) g;
+
             //Downcasting because Graphics2D is more useful(it has setPaint)
             g2D.setPaint(Color.PINK);
             g2D.fillRect(0, 0, 640, 640);
@@ -79,6 +118,52 @@ public class RendererPanel extends JPanel implements ActionListener{
             g2D.setPaint(Color.RED);
             g2D.drawRect(30, 30, 30, 30);
             //Quit button Outline
+        }
+        else if(gameState == 3){
+            g2D.setPaint(Color.PINK);
+            g2D.fillRect(0, 0, 640, 640);
+            g2D.setPaint(Color.BLACK);
+            g2D.drawString("HELLO DO YOU WANT START? ", 240, 200);
+            this.add(startButton);
+            startButton.setBounds(280, 400, 80, 50);
+            g2D.setPaint(Color.BLACK);
+            g2D.drawString("START", 305, 420);
+            g2D.drawRect(280, 400, 80, 50);
+
+
+        }
+        else if(gameState == 4){
+            g2D.setPaint(Color.PINK);
+            g2D.fillRect(0, 0, 640, 640);
+            g2D.setPaint(Color.BLACK);
+            g2D.drawString("SELECT UR THING ", 270, 200);
+
+
+            this.add(easyButton);
+            g2D.setPaint(Color.GREEN);
+            easyButton.setBounds(200, 300, 240, 40);
+            g2D.drawString("EASY", 310, 320);
+            g2D.drawRect(200, 300, 240, 40);
+            g2D.drawString("From Node 0 to Node 2", 450, 320);
+            this.add(mediumButton);
+            g2D.setPaint(Color.orange);
+            mediumButton.setBounds(200, 350, 240, 40);
+            g2D.drawString("MEDIUM", 300, 370);
+            g2D.drawRect(200, 350, 240, 40);
+            g2D.drawString("From Node 0 to Node 3", 450, 370);
+            this.add(hardButton);
+            g2D.setPaint(Color.red);
+            hardButton.setBounds(200, 400, 240, 40);
+            g2D.drawString("HARD", 310, 420);
+            g2D.drawRect(200, 400, 240, 40);
+            g2D.drawString("From Node 0 to Node 4", 450, 420);
+            this.add(impossibleButton);
+            g2D.setPaint(Color.BLACK);
+            impossibleButton.setBounds(200, 450, 240, 40);
+            g2D.drawString("IMOSSIBLE", 295, 470);
+            g2D.drawRect(200, 450, 240, 40);
+            g2D.drawString("From Node 0 to Node 5", 450, 470);
+
         }
         else{
             endGame(g);
@@ -148,6 +233,13 @@ public class RendererPanel extends JPanel implements ActionListener{
                 g2.drawString("YOU FAILED ", 320, 320);
             }
         }
+
+        public void removeButtons(){
+            this.remove(easyButton);
+            this.remove(mediumButton);
+            this.remove(hardButton);
+            this.remove(impossibleButton);
+        }
         @Override
         public void actionPerformed(ActionEvent e) {
         //This runs whenever a button is pressed
@@ -161,6 +253,30 @@ public class RendererPanel extends JPanel implements ActionListener{
                 game.time = 0;
             }
             //These check for which specific button and the action changes depending on which
+            if(e.getSource() == startButton){
+                gameState = 4;
+                this.remove(startButton);
+            }
+            if(e.getSource() == easyButton){
+                gameState = 0;
+                game.startGame(5, 5, 50, 20);
+                removeButtons();
+            }
+            if(e.getSource() == mediumButton){
+                gameState = 0;
+                game.startGame(7, 7, 50, 20);
+                removeButtons();
+            }
+            if(e.getSource() == hardButton){
+                gameState = 0;
+                game.startGame(9, 15, 50, 20);
+                removeButtons();
+            }
+            if(e.getSource() == impossibleButton){
+                gameState = 0;
+                game.startGame(11, 30, 50, 15);
+                removeButtons();
+            }
             repaint();
         }
 
