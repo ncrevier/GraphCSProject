@@ -209,9 +209,9 @@ public class RendererPanel extends JPanel implements ActionListener{
         public void renderNodes(Graphics2D g) {
             for (Integer i = 0; i < NumOfNodes; i++) {
                 g.setPaint(Color.BLACK);
-                g.drawOval((int)nodesArray[i].getX() + 320 - 20, (int)nodesArray[i].getY() + 320 -20, 40, 40);
+                g.drawOval((int)nodesArray[i].getX() + 300, (int)nodesArray[i].getY() + 300, 40, 40);
                 g.setPaint(Color.white);
-                g.fillOval((int)nodesArray[i].getX() + 320 - 19, (int)nodesArray[i].getY() + 320 -19, 38, 38);
+                g.fillOval((int)nodesArray[i].getX() + 301, (int)nodesArray[i].getY() + 301, 38, 38);
                 //For each node, an outer and inner circle to cover the not precise lines
                 g.setPaint(Color.PINK);
                 g.drawString(i.toString(), (int)nodesArray[i].getX() + 320-5, (int)nodesArray[i].getY() + 320+5);

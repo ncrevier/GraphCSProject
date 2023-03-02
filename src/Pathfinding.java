@@ -62,15 +62,6 @@ public class Pathfinding {
             }
             // byebye current, you are being reassigned!
         }
-        System.out.println("final ans:" + finish.getDistance());
-        Integer x = start.getNext();
-        System.out.println(x);
-        while (!(x == null)) {
-            System.out.println(x);
-            x = coolerGraph[x].getNext();
-            System.out.println(x);
-        }
-
         return finish.getDistance();
     }
 }
